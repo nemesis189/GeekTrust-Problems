@@ -1,6 +1,6 @@
 from datetime import datetime
-from src.subscription.Subscription import Subscription
-from src.topup.Topup import Topup
+from src.subscription.Subscription import Subscription, get_subscription
+from src.topup.Topup import Topup, get_topup
 from src.utils import get_formatted_date, get_validated_date
 
 class StreamingApp:
@@ -13,7 +13,7 @@ class StreamingApp:
 	def add_subscription(self, category, plan):
 		duplicate_category_flag = self.validate_duplicate_category(category)
 		if not duplicate_category_flag:
-			sub = Subscription(category, plan, self.start_date)
+			sub = get_subscription(category, plan, self.start_date)
 			self.subscriptions.append(sub)
 			self.update_renewal_amount(sub.plan_obj.price)
 		else:
@@ -25,10 +25,9 @@ class StreamingApp:
 		if len(self.subscriptions) == 0:
 			print('ADD_TOPUP_FAILED SUBSCRIPTIONS_NOT_FOUND')
 
-		elif not topup_already_applied_flag:
-			topup = Topup(topup_category, no_of_months)
-			self.topup = topup
-			self.update_renewal_amount(topup.get_total_topup_cost())
+		elif not topup_already_applied_flag:	
+			self.topup = get_topup(topup_category, no_of_months)
+			self.update_renewal_amount(self.topup.get_total_topup_cost())
 		
 		else:
 			print('ADD_TOPUP_FAILED DUPLICATE_TOPUP')
@@ -62,3 +61,7 @@ class StreamingApp:
 	
 	def set_start_date(self, start_date):
 		self.start_date = get_validated_date(start_date) if start_date else None
+
+def get_streaming_app(start_date=None):
+	app = StreamingApp(start_date)
+	return app
