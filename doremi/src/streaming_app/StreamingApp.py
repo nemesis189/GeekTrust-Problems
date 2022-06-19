@@ -11,26 +11,31 @@ class StreamingApp:
 		self.renewal_amount = 0
 
 	def add_subscription(self, category, plan):
-		duplicate_category_flag = self.validate_duplicate_category(category)
-		if not duplicate_category_flag:
-			sub = get_subscription(category, plan, self.start_date)
-			self.subscriptions.append(sub)
-			self.update_renewal_amount(sub.plan_obj.price)
+		if self.start_date:
+			duplicate_category_flag = self.validate_duplicate_category(category)
+			if not duplicate_category_flag:
+				sub = get_subscription(category, plan, self.start_date)
+				self.subscriptions.append(sub)
+				self.update_renewal_amount(sub.plan_obj.price)
+			else:
+				print('ADD_SUBSCRIPTION_FAILED DUPLICATE_CATEGORY')
 		else:
-			print('ADD_SUBSCRIPTION_FAILED DUPLICATE_CATEGORY')
+			print('ADD_SUBSCRIPTION_FAILED INVALID_DATE')
 
 	def add_topup(self, topup_category, no_of_months):
-		topup_already_applied_flag = self.validate_if_topup_applied()
+		if self.start_date:
+			topup_already_applied_flag = self.validate_if_topup_applied()
+			if len(self.subscriptions) == 0:
+				print('ADD_TOPUP_FAILED SUBSCRIPTIONS_NOT_FOUND')
 
-		if len(self.subscriptions) == 0:
-			print('ADD_TOPUP_FAILED SUBSCRIPTIONS_NOT_FOUND')
-
-		elif not topup_already_applied_flag:	
-			self.topup = get_topup(topup_category, no_of_months)
-			self.update_renewal_amount(self.topup.get_total_topup_cost())
-		
+			elif not topup_already_applied_flag:	
+				self.topup = get_topup(topup_category, no_of_months)
+				self.update_renewal_amount(self.topup.get_total_topup_cost())
+			
+			else:
+				print('ADD_TOPUP_FAILED DUPLICATE_TOPUP')
 		else:
-			print('ADD_TOPUP_FAILED DUPLICATE_TOPUP')
+			print('ADD_TOPUP_FAILED INVALID_DATE')
 
 	def print_renewal_details(self):
 		if len(self.subscriptions) == 0:

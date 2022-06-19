@@ -4,7 +4,8 @@ def get_commands():
 	if len(argv) != 2:
 		raise Exception("File path not entered")
 
-	file_path = argv[1]
+	args_position = 1
+	file_path = argv[args_position]
 	f = open(file_path, 'r')
 	Lines = f.readlines()
 
