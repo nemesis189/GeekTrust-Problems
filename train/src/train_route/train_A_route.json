@@ -1,0 +1,42 @@
+{
+	"CHENNAI": {
+		"code": "CHN",
+		"distance": 0
+	},
+	"SALEM": {
+		"code": "SLM",
+		"distance": 350
+	},
+	"BANGALORE": {
+		"code": "BLR",
+		"distance": 550
+	},
+	"KURNOOL": {
+		"code": "KRN",
+		"distance": 900
+	},
+	"HYDERABAD": {
+		"code": "HYB",
+		"distance": 1200
+	},
+	"NAGPUR": {
+		"code": "NGP",
+		"distance": 1600
+	},
+	"ITARSI": {
+		"code": "ITJ",
+		"distance": 1900
+	},
+	"BHOPAL": {
+		"code": "BPL",
+		"distance": 2000
+	},
+	"AGRA": {
+		"code": "AGA",
+		"distance": 2500
+	},
+	"NEW DELHI": {
+		"code": "NDL",
+		"distance": 2700
+	}
+}

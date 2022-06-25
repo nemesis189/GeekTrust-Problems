@@ -1,0 +1,50 @@
+{
+	"TRIVANDRUM": {
+		"code": "TVC",
+		"distance": 0
+	},
+	"SHORANUR": {
+		"code": "SRR",
+		"distance": 300
+	},
+	"MANGALORE": {
+		"code": "MAQ",
+		"distance": 600
+	},
+	"MADGAON": {
+		"code": "MAO",
+		"distance": 1000
+	},
+	"PUNE": {
+		"code": "PNE",
+		"distance": 1400
+	},
+	"HYDERABAD": {
+		"code": "HYB",
+		"distance": 2000
+	},
+	"NAGPUR": {
+		"code": "NGP",
+		"distance": 2400
+	},
+	"ITARSI": {
+		"code": "ITJ",
+		"distance": 2700
+	},
+	"BHOPAL": {
+		"code": "BPL",
+		"distance": 2800
+	},
+	"PATNA": {
+		"code": "PTA",
+		"distance": 3800
+	},
+	"NEW JALPAIGURI": {
+		"code": "NJP",
+		"distance": 4200
+	},
+	"GUWAHATI": {
+		"code": "GHY",
+		"distance": 4700
+	}
+}
